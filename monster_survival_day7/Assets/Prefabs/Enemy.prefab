@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 434233205252069441}
   - component: {fileID: 5908408552417900489}
   - component: {fileID: 6160480898099542956}
+  - component: {fileID: 3793464696960759904}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 5
+  maxHitPoint: 5
   attackPoint: 5
 --- !u!114 &434233205252069441
 MonoBehaviour:
@@ -141,3 +143,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11293ec62ae364d7e987ddcbc83e25c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCoolTime: 0
+  coolTimeMax: 0
+--- !u!114 &3793464696960759904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434233205252069466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb442820889945e681b0812a55d2b66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPointPrefab: {fileID: 6119962023134758072, guid: 206c3c7bd5b134cc78a12959fc642a41, type: 3}
+  offset: {x: 0, y: 0, z: 0.5}

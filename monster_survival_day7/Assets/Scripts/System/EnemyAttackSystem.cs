@@ -37,7 +37,8 @@ public class EnemyAttackSystem : MonoBehaviour
 
             if (Vector3.Distance(colliderComponent.transform.position, playerObject.transform.position) > colliderComponent.Radius + playerColliderComponent.Radius) continue;
 
-            playerDamageComponent.Damage += characterBaseComponent.AttackPoint;
+            playerDamageComponent.Damage = characterBaseComponent.AttackPoint;
+            Debug.Log(playerDamageComponent.Damage);
             playerDamageComponent.IsDamage = true;
         }
     }

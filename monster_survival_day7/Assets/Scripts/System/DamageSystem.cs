@@ -32,7 +32,7 @@ public class DamageSystem
                 continue;
             }
 
-            if (damageComponent.IsDamage) continue;
+            if (!damageComponent.IsDamage) continue;
             characterBaseComponent.HitPoint -= damageComponent.Damage;
             damageComponent.Damage = 0;
             damageComponent.IsDamage = false;

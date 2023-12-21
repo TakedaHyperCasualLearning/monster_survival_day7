@@ -55,6 +55,7 @@ public class EnemySpawnerSystem
         Vector3 tempPos = new Vector3(Random.RandomRange(-enemySpawnerComponent.ScreenSize.x, enemySpawnerComponent.ScreenSize.x), 0.0f, Random.RandomRange(-enemySpawnerComponent.ScreenSize.y, enemySpawnerComponent.ScreenSize.y)) + enemySpawnerComponent.PositionOffset;
         tempObject.transform.position = enemySpawnerComponent.transform.position + enemySpawnerComponent.PositionOffset;
         tempObject.GetComponent<CharacterMoveComponent>().Direction = playerObject.transform.position - tempObject.transform.position;
+        tempObject.GetComponent<CharacterBaseComponent>().HitPoint = tempObject.GetComponent<CharacterBaseComponent>().MaxHitPoint;
         if (!objectPool.IsNewGenerate) return;
         gameEvent.AddComponentList?.Invoke(tempObject);
         objectPool.IsNewGenerate = false;
