@@ -33,12 +33,24 @@ public class DamageSystem
                 continue;
             }
 
+            if (damageComponent.IsEffect)
+            {
+                damageComponent.EffectTimer += Time.deltaTime * 8;
+                float alpha = Mathf.PingPong(damageComponent.EffectTimer, 1.0f);
+                damageComponent.MyRenderer.materials[0].SetFloat("_MyAlphaTimer", alpha);
+                if (damageComponent.EffectTimer < damageComponent.BlinkCount) continue;
+                damageComponent.EffectTimer = 0.0f;
+                damageComponent.IsEffect = false;
+                damageComponent.MyRenderer.materials[0].SetFloat("_MyAlphaTimer", 0.0f);
+            }
+
             if (!damageComponent.IsDamage) continue;
             characterBaseComponent.HitPoint -= damageComponent.Damage;
 
             damageComponent.Damage = 0;
             damageComponent.IsDamage = false;
             damageComponent.CoolTimer = 0.0f;
+            damageComponent.IsEffect = true;
             if (characterBaseComponent.HitPoint <= 0)
             {
                 if (damageComponent.gameObject != playerObject)

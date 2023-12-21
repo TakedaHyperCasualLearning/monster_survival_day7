@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7fa5fef6bcc9b4fa3beafbdecb741036, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,6 +145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCoolTime: 0
   coolTimeMax: 0
+  myRenderer: {fileID: 434233205252069444}
+  effectTimeMax: 0
+  blinkCount: 4
 --- !u!114 &3793464696960759904
 MonoBehaviour:
   m_ObjectHideFlags: 0
