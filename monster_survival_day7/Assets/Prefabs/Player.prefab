@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3002701918456756214, guid: 64ea29ea8818049a5adc5a9a1ffdc93a, type: 3}
   attackInterval: 0.8
+  split: 1
 --- !u!114 &2301644493772458315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +205,4 @@ MonoBehaviour:
   attackRaiseValue: 1
   hitPointRaiseValue: 10
   attackSpeedRaiseValue: 0.05
+  splitRaiseValue: 1

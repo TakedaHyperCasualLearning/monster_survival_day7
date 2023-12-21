@@ -68,6 +68,10 @@ public class LevelUPUISystem
                     levelUPUIComponent.LevelUPButtonList[i].onClick.AddListener(OnClickAttackSpeedUPButton);
                     levelUPUIComponent.LevelUPButtonList[i].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "AttackSpeed UP";
                     break;
+                case 3:
+                    levelUPUIComponent.LevelUPButtonList[i].onClick.AddListener(OnSplitUPButton);
+                    levelUPUIComponent.LevelUPButtonList[i].gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Split UP";
+                    break;
             }
         }
     }
@@ -99,6 +103,17 @@ public class LevelUPUISystem
         if (levelUPComponent == null) return;
 
         levelUPComponent.AttackSpeedLevel++;
+        gameEvent.LevelUP?.Invoke();
+        levelUPComponent.IsLevelUp = false;
+    }
+
+
+    private void OnSplitUPButton()
+    {
+        LevelUPComponent levelUPComponent = playerObject.GetComponent<LevelUPComponent>();
+        if (levelUPComponent == null) return;
+
+        levelUPComponent.SplitLevel++;
         gameEvent.LevelUP?.Invoke();
         levelUPComponent.IsLevelUp = false;
     }

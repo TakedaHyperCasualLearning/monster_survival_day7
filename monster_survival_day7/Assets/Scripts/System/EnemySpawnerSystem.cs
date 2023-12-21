@@ -52,9 +52,9 @@ public class EnemySpawnerSystem
     private void Spawn(EnemySpawnerComponent enemySpawnerComponent)
     {
         GameObject tempObject = objectPool.GetGameObject(enemySpawnerComponent.EnemyPrefab);
-        Vector3 tempPos = new Vector3(Random.RandomRange(-enemySpawnerComponent.ScreenSize.x, enemySpawnerComponent.ScreenSize.x), 0.0f, Random.RandomRange(-enemySpawnerComponent.ScreenSize.y, enemySpawnerComponent.ScreenSize.y)) + enemySpawnerComponent.PositionOffset;
+        Vector3 tempPos = new Vector3(Random.RandomRange(enemySpawnerComponent.ScreenSize.x, enemySpawnerComponent.ScreenSize.x + enemySpawnerComponent.PositionOffset.x), 0.0f, Random.RandomRange(enemySpawnerComponent.ScreenSize.y, enemySpawnerComponent.ScreenSize.y + enemySpawnerComponent.PositionOffset.z));
         tempPos *= Random.RandomRange(0.0f, 1.0f) > 0.5f ? 1 : -1;
-        tempObject.transform.position = enemySpawnerComponent.transform.position + enemySpawnerComponent.PositionOffset;
+        tempObject.transform.position = playerObject.transform.position + tempPos;
         tempObject.GetComponent<CharacterMoveComponent>().Direction = playerObject.transform.position - tempObject.transform.position;
         tempObject.GetComponent<CharacterBaseComponent>().HitPoint = tempObject.GetComponent<CharacterBaseComponent>().MaxHitPoint;
         if (!objectPool.IsNewGenerate) return;

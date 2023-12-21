@@ -39,13 +39,18 @@ public class PlayerAttackSystem
 
     private void ShotAction(PlayerAttackComponent playerAttackComponent)
     {
-        GameObject gameObject = objectPool.GetGameObject(playerAttackComponent.BulletPrefab);
-        gameObject.transform.position = playerAttackComponent.transform.position;
-        gameObject.GetComponent<BulletMoveComponent>().Direction = playerAttackComponent.transform.forward;
-        gameObject.GetComponent<BulletBaseComponent>().AttackPoint = playerAttackComponent.GetComponent<CharacterBaseComponent>().AttackPoint;
-        if (!objectPool.IsNewGenerate) return;
-        gameEvent.AddComponentList?.Invoke(gameObject);
-        objectPool.IsNewGenerate = false;
+        for (int i = 0; i < playerAttackComponent.Split; i++)
+        {
+            GameObject gameObject = objectPool.GetGameObject(playerAttackComponent.BulletPrefab);
+            gameObject.transform.position = playerAttackComponent.transform.position;
+            Vector3 direction = new Vector3(0, 180 / (playerAttackComponent.Split + 1) * (i + 1) - 90, 0);
+            Quaternion angleQuaternion = Quaternion.Euler(direction);
+            gameObject.GetComponent<BulletMoveComponent>().Direction = angleQuaternion * playerAttackComponent.transform.forward;
+            gameObject.GetComponent<BulletBaseComponent>().AttackPoint = playerAttackComponent.GetComponent<CharacterBaseComponent>().AttackPoint;
+            if (!objectPool.IsNewGenerate) continue;
+            gameEvent.AddComponentList?.Invoke(gameObject);
+            objectPool.IsNewGenerate = false;
+        }
     }
 
     private void AddComponentList(GameObject gameObject)

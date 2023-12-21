@@ -22,6 +22,7 @@ public class LevelUPSystem
         levelUPComponent.AttackBase = characterBaseComponent.AttackPoint;
         levelUPComponent.HitPointBase = characterBaseComponent.HitPoint;
         levelUPComponent.AttackSpeedBase = playerAttackComponent.AttackInterval;
+        levelUPComponent.SplitBase = playerAttackComponent.Split;
         levelUPComponent.IsLevelUp = false;
     }
 
@@ -65,6 +66,12 @@ public class LevelUPSystem
             {
                 playerAttackComponent.AttackInterval = levelUPComponent.AttackSpeedBase - levelUPComponent.AttackSpeedRaiseValue * levelUPComponent.AttackSpeedLevel;
                 levelUPComponent.AttackSpeedLevelOld = levelUPComponent.AttackSpeedLevel;
+            }
+
+            if (levelUPComponent.SplitLevel != levelUPComponent.SplitLevelOld)
+            {
+                playerAttackComponent.Split = levelUPComponent.SplitBase + levelUPComponent.SplitRaiseValue * levelUPComponent.SplitLevel;
+                levelUPComponent.SplitLevelOld = levelUPComponent.SplitLevel;
             }
         }
     }

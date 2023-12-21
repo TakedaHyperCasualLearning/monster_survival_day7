@@ -1210,7 +1210,7 @@ MonoBehaviour:
   - {fileID: 1120746098}
   - {fileID: 534134465}
   - {fileID: 630930242}
-  levelUpKindCount: 3
+  levelUpKindCount: 4
 --- !u!114 &1089934521
 MonoBehaviour:
   m_ObjectHideFlags: 0
