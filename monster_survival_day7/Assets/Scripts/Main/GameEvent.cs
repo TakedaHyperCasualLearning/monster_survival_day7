@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class GameEvent
 {
-    Action<GameObject> AddComponentList;
-    Action<GameObject> RemoveComponentList;
+    public Action<GameObject> AddComponentList;
+    public Action<GameObject> RemoveComponentList;
 }
