@@ -45,6 +45,10 @@ public class DamageSystem
                 {
                     playerObject.GetComponent<LevelUPComponent>().ExperiencePoint += 1;
                 }
+                else
+                {
+                    gameEvent.GameOver?.Invoke();
+                }
                 gameEvent.ReleaseObject?.Invoke(damageComponent.gameObject);
             }
         }

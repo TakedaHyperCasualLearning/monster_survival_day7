@@ -97,4 +97,14 @@ public class LevelUPSystem
         playerAttackComponentList.Remove(playerAttackComponent);
     }
 
+    public bool GetLevelUP()
+    {
+        for (int i = 0; i < levelUPComponentList.Count; i++)
+        {
+            LevelUPComponent levelUPComponent = levelUPComponentList[i];
+            if (levelUPComponent.IsLevelUp) return true;
+        }
+        return false;
+    }
+
 }
