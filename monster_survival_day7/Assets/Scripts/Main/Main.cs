@@ -11,6 +11,7 @@ public class Main : MonoBehaviour
     [SerializeField] private GameObject LevelUpUI;
     [SerializeField] private GameObject CameraObject;
     [SerializeField] private GameObject GameOverUI;
+    [SerializeField] private GameObject BulletRoot;
 
     private GameEvent gameEvent;
     private ObjectPool objectPool;
@@ -44,7 +45,7 @@ public class Main : MonoBehaviour
         characterMoveSystem = new CharacterMoveSystem(gameEvent);
 
         playerInputSystem = new PlayerInputSystem(gameEvent);
-        playerAttackSystem = new PlayerAttackSystem(gameEvent, objectPool);
+        playerAttackSystem = new PlayerAttackSystem(gameEvent, objectPool, BulletRoot);
 
         enemySpawnerSystem = new EnemySpawnerSystem(gameEvent, player, objectPool);
         enemyAttackSystem = new EnemyAttackSystem(gameEvent, player);

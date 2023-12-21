@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7fa5fef6bcc9b4fa3beafbdecb741036, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3002701918456756214, guid: 64ea29ea8818049a5adc5a9a1ffdc93a, type: 3}
   attackInterval: 0.8
   split: 1
+  shotEffectPrefab: {fileID: 6428265901853161616, guid: e0e0383f8afe74446a4ed913c4e484bd, type: 3}
 --- !u!114 &2301644493772458315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCoolTime: 1
   coolTimeMax: 0.5
+  myRenderer: {fileID: 8319487595235614137}
+  effectTimeMax: 0
+  blinkCount: 4
 --- !u!114 &4937321205046177911
 MonoBehaviour:
   m_ObjectHideFlags: 0
