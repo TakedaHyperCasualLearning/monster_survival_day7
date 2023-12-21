@@ -25,7 +25,6 @@ public class HitPointUISystem : MonoBehaviour
         tempUI.transform.localPosition = Vector3.zero;
         tempUI.transform.SetParent(uiRoot.transform);
         hitPointUIComponent.HitPointText = tempUI.GetComponent<TextMeshPro>();
-        Debug.Log(hitPointUIComponent.HitPointText);
     }
 
 

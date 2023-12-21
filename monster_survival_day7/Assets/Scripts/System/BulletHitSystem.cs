@@ -28,13 +28,16 @@ public class BulletHitSystem
             if (!colliderComponent.gameObject.activeSelf) continue;
 
             List<GameObject> gameObjectList = objectPool.GetGameObjectList(enemyPrefab);
+            if (gameObjectList == null) continue;
             for (int j = 0; j < gameObjectList.Count; j++)
             {
                 ColliderComponent tempEnemy = gameObjectList[j].GetComponent<ColliderComponent>();
                 if (!tempEnemy.gameObject.activeSelf) continue;
 
                 if (Vector3.Distance(colliderComponent.transform.position, tempEnemy.transform.position) > colliderComponent.Radius + tempEnemy.Radius) continue;
-                tempEnemy.gameObject.GetComponent<CharacterBaseComponent>().HitPoint -= bulletBaseComponent.AttackPoint;
+                DamageComponent enemyDamageComponent = tempEnemy.gameObject.GetComponent<DamageComponent>();
+                enemyDamageComponent.Damage = bulletBaseComponent.AttackPoint;
+                enemyDamageComponent.IsDamage = true;
                 gameEvent.ReleaseObject?.Invoke(bulletBaseComponent.gameObject);
             }
         }

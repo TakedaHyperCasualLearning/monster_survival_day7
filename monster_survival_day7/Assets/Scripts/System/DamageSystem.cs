@@ -10,9 +10,10 @@ public class DamageSystem
     private List<DamageComponent> damageComponentList = new List<DamageComponent>();
     private List<CharacterBaseComponent> characterBaseComponentList = new List<CharacterBaseComponent>();
 
-    public DamageSystem(GameEvent gameEvent)
+    public DamageSystem(GameEvent gameEvent, GameObject playerObject)
     {
         this.gameEvent = gameEvent;
+        this.playerObject = playerObject;
 
         gameEvent.AddComponentList += AddComponentList;
         gameEvent.RemoveComponentList += RemoveComponentList;
@@ -34,11 +35,16 @@ public class DamageSystem
 
             if (!damageComponent.IsDamage) continue;
             characterBaseComponent.HitPoint -= damageComponent.Damage;
+
             damageComponent.Damage = 0;
             damageComponent.IsDamage = false;
             damageComponent.CoolTimer = 0.0f;
             if (characterBaseComponent.HitPoint <= 0)
             {
+                if (damageComponent.gameObject != playerObject)
+                {
+                    playerObject.GetComponent<LevelUPComponent>().ExperiencePoint += 1;
+                }
                 gameEvent.ReleaseObject?.Invoke(damageComponent.gameObject);
             }
         }
