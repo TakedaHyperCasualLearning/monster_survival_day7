@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8319487595235614141, guid: 714c94ecef98b4c60ae4994eaa9b7148, type: 3}
+  enemyPrefab: {fileID: 434233205252069466, guid: 9d2f8c8bb4a6f42e4bb3b820487c3363, type: 3}
   enemySpawner: {fileID: 448273283}
 --- !u!4 &120385545
 Transform:

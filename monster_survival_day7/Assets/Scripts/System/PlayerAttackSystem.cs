@@ -42,6 +42,7 @@ public class PlayerAttackSystem
         GameObject gameObject = objectPool.GetGameObject(playerAttackComponent.BulletPrefab);
         gameObject.transform.position = playerAttackComponent.transform.position;
         gameObject.GetComponent<BulletMoveComponent>().Direction = playerAttackComponent.transform.forward;
+        gameObject.GetComponent<BulletBaseComponent>().AttackPoint = playerAttackComponent.GetComponent<CharacterBaseComponent>().AttackPoint;
         if (!objectPool.IsNewGenerate) return;
         gameEvent.AddComponentList?.Invoke(gameObject);
         objectPool.IsNewGenerate = false;
