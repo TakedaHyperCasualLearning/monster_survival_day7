@@ -5,16 +5,21 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject enemySpawner;
 
     private GameEvent gameEvent;
+    private ObjectPool objectPool;
     private CharacterMoveSystem characterMoveSystem;
 
     private PlayerInputSystem playerInputSystem;
     private PlayerAttackSystem playerAttackSystem;
 
+    private EnemySpawnerSystem enemySpawnerSystem;
+
     void Start()
     {
         gameEvent = new GameEvent();
+        objectPool = new ObjectPool(gameEvent);
 
         GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
 
@@ -23,7 +28,10 @@ public class Main : MonoBehaviour
         playerInputSystem = new PlayerInputSystem(gameEvent);
         playerAttackSystem = new PlayerAttackSystem(gameEvent);
 
+        enemySpawnerSystem = new EnemySpawnerSystem(gameEvent, player, objectPool);
+
         gameEvent.AddComponentList?.Invoke(player);
+        gameEvent.AddComponentList?.Invoke(enemySpawner);
     }
 
     void Update()
@@ -31,5 +39,6 @@ public class Main : MonoBehaviour
         playerInputSystem.OnUpdate();
         playerAttackSystem.OnUpdate();
         characterMoveSystem.OnUpdate();
+        enemySpawnerSystem.OnUpdate();
     }
 }
